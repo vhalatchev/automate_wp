@@ -6,6 +6,11 @@ services:
       - wordpress_database
     volumes:
       - wordpress_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
+      WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      WORDPRES_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
 
   wordpress_database:
     image: mysql:5.7
@@ -36,20 +41,17 @@ services:
     depends_on:
       - wordpress_database
     environment:
-      WORDPRESS_LOCALE: en_US
-      WORDPRESS_DB_HOST: wordpress_database
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: my_wordpress_password
-      WORDPRESS_WEBSITE_TITLE: "My blog"
-      # WORDPRESS_WEBSITE_URL: "http://example.com"
-      # WORDPRESS_WEBSITE_URL_WITHOUT_HTTP: "example.com"
-      WORDPRESS_WEBSITE_URL: "http://192.168.0.108"
-      WORDPRESS_WEBSITE_URL_WITHOUT_HTTP: "192.168.0.108"
+      WORDDPRESS_LOCALE: "${WORDPRESS_LOCALE}"
+      # WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      # WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
+      # WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      # WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+      WORDPRESS_WEBSITE_TITLE: "${WORDPRESS_WBSITE_TITLE}"
+      WORDPRESS_WEBSITE_URL: "${WORDPRESS_WEBSITE_URL}"
+      WORDPRESS_WEBSITE_URL_WITHOUT_HTTP: "${WORDPRESS_WEBSITE_URL_WITHOUT_HTTP}"
       WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%year%/%monthnum%/%day%/%postname%/"
-      WORDPRESS_ADMIN_USER: wordpress
-      WORDPRESS_ADMIN_PASSWORD: my_root_password
-      WORDPRESS_ADMIN_EMAIL: "vikhren@gmail.com"
+      WORDPRESS_ADMIN_USER: "${WORDPRESS_ADMIN_USER}"
+      WORDPRESS_ADMIN_PASSWORD: "${WORDPRESS_ADMIN_PASSWORD}"
 
 volumes:
   db_data: {}
