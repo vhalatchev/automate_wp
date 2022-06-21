@@ -6,7 +6,7 @@ start:
 stop:
 	docker-compose stop
 
-wordpress_install:
+wordpress_install: start
 	$(WORDPRESS_TOOLBOX) install
 
 wordpress_configure:
