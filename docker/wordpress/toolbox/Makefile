@@ -19,7 +19,7 @@ configure:
 
      @echo "⚙️ Configuring Wordpress parameters..."
      $(WP_CLI) core install \
-             --url=${WORDPRESS_WEBSITE_URL_WITHOUT_HTTP} \
+             --url=${WORDPRESS_WEBSITE_URL_WITHOUT_HTTP}
              
 
      $(WP_CLI) option update siteurl "${WORDPRESS_WEBSITE_URL}"
