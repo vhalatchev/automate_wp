@@ -3,8 +3,8 @@ WORDPRESS_TOOLBOX=docker-compose run --rm wordpress_toolbox
 start:
 	docker-compose up -d --build
 
-stop:
-	docker-compose stop
+# stop:
+#	docker-compose stop
 
 wordpress_install: start
 	$(WORDPRESS_TOOLBOX) install
